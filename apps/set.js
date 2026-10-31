@@ -163,9 +163,10 @@ export class SparkSet extends plugin {
     const stats = await Data.dailyTask()
     if (!stats?.total) return this.reply("暂无续火花目标，请先 #火花添加 或在锅巴面板配置"), true
     this.reply(
-      stats.fail
+      (stats.fail
         ? `续火花完成：成功 ${stats.ok} 人，失败 ${stats.fail} 人`
-        : `续火花完成：已向 ${stats.ok} 人发送火花表情`,
+        : `续火花完成：已向 ${stats.ok} 人发送火花表情`) +
+        (stats.notes?.length ? `\n${stats.notes.join("\n")}` : ""),
     )
     return true
   }

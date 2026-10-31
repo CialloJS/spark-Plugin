@@ -81,7 +81,6 @@ refreshListCache()
 export function getConfigData() {
   const { admin, SparkSet } = Config
   migrateGlobalOnce(SparkSet)
-  const norm = raw => (Array.isArray(raw) ? raw : raw != null ? [raw] : [])
   // 账号集合：已登录账号 ∪ 已有独立配置的账号（离线 / 旧数据账号也回显，保证配置不丢）
   const ids = new Set(douyinAccounts())
   for (const k of Object.keys(SparkSet || {})) {
@@ -92,7 +91,7 @@ export function getConfigData() {
     const sub = SparkSet?.[id] || {}
     s[id] = {
       users: Array.isArray(sub.users) ? sub.users.map(String).filter(Boolean) : [],
-      sparkEmoji: norm(sub.sparkEmoji),
+      sparkEmoji: Data.emojiListOf(id),
       dailyCron: sub.dailyCron ?? "",
     }
   }

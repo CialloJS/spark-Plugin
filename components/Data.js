@@ -27,11 +27,14 @@ class Data {
     return Array.isArray(cfg.users) ? cfg.users.map(String).filter(Boolean) : []
   }
 
-  /** 指定账号配置的火花表情列表（独立配置，未配置默认空） */
+  /** 指定账号配置的火花表情列表（独立配置；未设置用默认贴纸，显式清空则保留为空） */
   emojiListOf(selfId) {
     const cfg = this.subCfg(selfId)
     const raw = cfg?.sparkEmoji
-    return (Array.isArray(raw) ? raw : raw != null ? [raw] : []).map(String).filter(Boolean)
+    return (Array.isArray(raw) ? raw : raw != null ? [raw] : ["续火花"])
+      .filter(e => e != null)
+      .map(e => String(e).trim())
+      .filter(Boolean)
   }
 
   /** 指定账号的每日定时 cron（独立配置，未配置默认空） */
@@ -129,7 +132,7 @@ class Data {
 
   /** 每日定时任务：逐账号发送该账号配置的目标与表情（onlyId 指定仅执行某账号，否则全部在线账号） */
   async dailyTask(onlyId) {
-    const stats = { total: 0, ok: 0, fail: 0 }
+    const stats = { total: 0, ok: 0, fail: 0, notes: [] }
     const accounts = onlyId ? [onlyId] : this.accounts()
     if (!accounts.length) {
       logger.warn("[抖音续火花] 无在线抖音账号，定时任务跳过")
@@ -149,11 +152,13 @@ class Data {
       const bot = Bot[selfId]
       if (!emojiList.length) {
         stats.fail += users.length
+        stats.notes.push(`账号 ${selfId} 的火花表情已清空，请在锅巴面板选择表情并保存`)
         logger.warn(`[抖音续火花] 账号 ${selfId} 未配置火花表情，本轮跳过`)
         continue
       }
       if (!bot?.sdk?.msg) {
         stats.fail += users.length
+        stats.notes.push(`账号 ${selfId} 不在线，请先登录`)
         logger.warn(`[抖音续火花] 账号 ${selfId} 不在线，本轮跳过`)
         continue
       }
@@ -180,11 +185,11 @@ class Data {
             logger.mark(`[抖音续火花] 续火花成功：${name}（账号 ${selfId}，表情 ${emojiList[emojiIds.indexOf(e)]}）`)
           } catch (err) {
             ok = false
-            stats.fail++
             logger.error(`[抖音续火花] 续火花失败：${name}（账号 ${selfId}，表情 ${emojiList[emojiIds.indexOf(e)]}）${err.message}`)
           }
         }
         if (ok) stats.ok++
+        else stats.fail++
       }
       if (sent) logger.info(`[抖音续火花] 账号 ${selfId} 本次共续火花 ${sent} 个表情`)
     }
