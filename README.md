@@ -10,7 +10,7 @@
 
 ## 🐬 安装教程
 
-需要先准备 [TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai) 与 [DouYin-Plugin](../../../Yunzai/plugins/DouYin-Plugin)（抖音适配器）
+需要先准备 [TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai) 与 [DouYin-Plugin](https://github.com/CialloJS/DouYin-Plugin)（抖音适配器）
 
 <details>
   <summary>展开/收起</summary>
