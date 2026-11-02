@@ -1,0 +1,25 @@
+# Installed dependencies
+node_modules/
+.pnpm-store/
+.yarn/
+# Local account settings and runtime data
+.env
+.env.*
+!.env.example
+data/
+logs/
+cache/
+temp/
+tmp/
+config/*
+!config/system/
+*.log
+*.db
+*.db-*
+*.sqlite*
+*.pem
+*.key
+*.bak
+# Local metadata and archived Git history
+.DS_Store
+.git.disabled*/
