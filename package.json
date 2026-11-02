@@ -1,10 +1,10 @@
 {
   "name": "spark-Plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "抖音续火花：支持每日定时对配置的好友主动发送火花表情，可多表情、锅巴面板可视化配置",
   "main": "index.js",
   "type": "module",
-  "author": "dmmdekkd",
+  "author": "CialloJS",
   "keywords": [
     "TRSS-Yunzai",
     "DouYin",

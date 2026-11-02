@@ -4,7 +4,7 @@
 
 抖音「续火花」插件
 
-基于 [DouYin-Plugin](https://github.com/dmmdekkd/DouYin-Plugin) 适配器，对配置的抖音好友每日定时主动发送「续火花」表情维持火花
+基于 [DouYin-Plugin](https://github.com/CialloJS/DouYin-Plugin) 适配器，对配置的抖音好友每日定时主动发送「续火花」表情维持火花
 
 </div>
 
@@ -20,14 +20,14 @@
 推荐使用 git 进行安装，以方便后续使用 `#火花更新` 升级：
 
 ```bash
-git clone --depth=1 https://github.com/dmmdekkd/Spark-Plugin.git ./plugins/spark-Plugin
+git clone --depth=1 https://github.com/CialloJS/Spark-Plugin.git ./plugins/spark-Plugin
 ```
 
 > [!NOTE]
 > 如果你的网络环境较差，无法连接到 Github，可以使用代理加速下载服务
 >
 > ```bash
-> git clone --depth=1 https://ghproxy.521002.xyz/https://github.com/dmmdekkd/Spark-Plugin.git ./plugins/spark-Plugin
+> git clone --depth=1 https://ghproxy.521002.xyz/https://github.com/CialloJS/Spark-Plugin.git ./plugins/spark-Plugin
 > ```
 
 </details>
@@ -73,5 +73,5 @@ git clone --depth=1 https://github.com/dmmdekkd/Spark-Plugin.git ./plugins/spark
 ## 相关链接
 
 - 许可证：MIT（[LICENSE](LICENSE)）
-- DouYin-Plugin（抖音适配器）：https://github.com/dmmdekkd/DouYin-Plugin
+- DouYin-Plugin（抖音适配器）：https://github.com/CialloJS/DouYin-Plugin
 - TRSS-Yunzai：https://github.com/TimeRainStarSky/Yunzai
